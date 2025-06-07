@@ -191,17 +191,23 @@ export default function Home() {
                 </div>
                 <div className="flex flex-col items-end gap-2" ref={ellipseRef}>
                   <p className="text-xs text-slate-400 mt-1 md:text-xl font-semibold">Status: {tarefa.status ?? "pendente"}</p>
-                  <button onClick={() => setEllipse(!ellipse)}>
-                    <Ellipsis size={24} />
-                  </button>
-                  {ellipse && (
-                    <div className="absolute bg-slate-800 p-2 rounded-md mt-2 right-16 z-10">
-                      <button onClick={() => handleDelete(index)} className="text-red-500 hover:text-red-700">
+
+                  <div className="flex gap-4 items-center">
+                    {ellipse && (
+                    <div className="  bg-slate-800 p-2 rounded-md mt-2 right-16  z-10 hover:bg-slate-600 ">
+                      <button onClick={() => handleDelete(index)} className="text-red-500   cursor-pointer">
                         Excluir
                       </button>
                     </div>
                   )}
-                  <button onClick={() => handleCheck(index)} className="h-5 w-5 border-2 rounded-sm border-white hover:bg-green-700"/>
+                  <button onClick={() => setEllipse(!ellipse)} className="cursor-pointer">
+                    <Ellipsis size={24} />
+                  </button>
+                  </div>
+
+                  
+                  
+                  <button onClick={() => handleCheck(index)} className="h-5 w-5 cursor-pointer border-2 rounded-sm border-white hover:bg-green-700"/>
                 </div>
               </div>
             ))
@@ -244,7 +250,7 @@ export default function Home() {
                         t === tarefa ? { ...t, status: "pendente" } : t);
                       setTarefas(novas);
                       setTarefasConcluidas(novas.filter((t) => t.status === "concluída"));
-                    }} className=" bg-slate-600 font-semibold px-2 py-1 text-xs md:text-xl rounded hover:bg-slate-500">
+                    }} className=" bg-slate-600 font-semibold px-2 py-1 cursor-pointer text-xs md:text-xl rounded hover:bg-slate-500">
                     Voltar para pendente
                   </button>
                 </div>
