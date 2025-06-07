@@ -2,6 +2,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 
 export default function TaskForm({ form, setForm, tarefas, setTarefas }) {
+
   if (!form) return null;
 
   const [titulo, setTitulo] = useState("");
@@ -34,6 +35,7 @@ export default function TaskForm({ form, setForm, tarefas, setTarefas }) {
     setTarefas((tarefasAnteriores) => [...tarefasAnteriores, novaTarefa]);
 
     
+    
     setTitulo("");
     setDescricao("");
     setPrioridade("baixa");
@@ -61,25 +63,13 @@ export default function TaskForm({ form, setForm, tarefas, setTarefas }) {
          
           <div className="flex flex-col gap-1">
             <label htmlFor="titulo" className="text-slate-300">Título</label>
-            <input
-              value={titulo}
-              onChange={(e) => setTitulo(e.target.value)}
-              type="text"
-              id="titulo"
-              
-              placeholder="Ex: Estudar Cálculo"
-              className="bg-slate-800 px-3 py-2 rounded-md outline-none placeholder:text-slate-400"
-            />
+            <input value={titulo} onChange={(e) => setTitulo(e.target.value)} type="text" id="titulo" placeholder="Ex: Estudar Matemática"
+              className="bg-slate-800 px-3 py-2 rounded-md outline-none placeholder:text-slate-400"/>
           </div>
 
-          
           <div className="flex flex-col gap-1">
             <label htmlFor="descricao" className="text-slate-300">Descrição</label>
-            <textarea
-              id="descricao"
-              value={descricao}
-              onChange={(e) => setDescricao(e.target.value)}
-              
+            <textarea id="descricao" value={descricao} onChange={(e) => setDescricao(e.target.value)}
               placeholder="Detalhes da tarefa..."
               rows={3}
               className="bg-slate-800 px-3 py-2 rounded-md outline-none resize-none placeholder:text-slate-400"
@@ -89,13 +79,8 @@ export default function TaskForm({ form, setForm, tarefas, setTarefas }) {
           
           <div className="flex flex-col gap-1">
             <label htmlFor="prioridade" className="text-slate-300">Prioridade</label>
-            <select
-              value={prioridade}
-              onChange={(e) => setPrioridade(e.target.value)}
-              id="prioridade"
-              className="bg-slate-800  p-3 rounded-md outline-none cursor-pointer"
-              
-            >
+            <select value={prioridade}  onChange={(e) => setPrioridade(e.target.value)} id="prioridade"
+              className="bg-slate-800  p-3 rounded-md outline-none cursor-pointer">
               <option value="baixa">Baixa</option>
               <option value="média">Média</option>
               <option value="alta">Alta</option>
@@ -109,9 +94,7 @@ export default function TaskForm({ form, setForm, tarefas, setTarefas }) {
               value={categoria}
               onChange={(e) => setCategoria(e.target.value)}
               id="categoria"
-              className="bg-slate-800 cursor-pointer p-3 rounded-md outline-none"
-              
-            >
+              className="bg-slate-800 cursor-pointer p-3 rounded-md outline-none">
               <option value="estudos">Estudos</option>
               <option value="pessoal">Pessoal</option>
               <option value="trabalho">Trabalho</option>
@@ -121,27 +104,17 @@ export default function TaskForm({ form, setForm, tarefas, setTarefas }) {
          
           <div className="flex flex-col gap-1">
             <label htmlFor="dataLimite" className="text-slate-300">Data Limite</label>
-            <input
-                type="date"
-                id="dataLimite"
-                value={dataLimite}
-                onChange={(e) => setDataLimite(e.target.value)}
+            <input type="date" id="dataLimite" value={dataLimite} onChange={(e) => setDataLimite(e.target.value)}
                 className="bg-slate-800 cursor-pointer p-3 rounded-md outline-none"
-                min={new Date().toISOString().split("T")[0]} // data mínima
-
+                min={new Date().toISOString().split("T")[0]}
             />
           </div>
           
           {validacao && (
-            <p className="text-slate-300 text-sm mt-2">
-              Por favor, preencha todos os campos.
-            </p>
+            <p className="text-slate-300 text-sm mt-2">Por favor, preencha todos os campos.</p>
           )}
           
-          <button
-            type="submit"
-            className="mt-4 cursor-pointer bg-blue-600 hover:bg-blue-700 transition-colors px-4 py-2 rounded-md font-medium"
-          >
+          <button type="submit" className="mt-4 cursor-pointer bg-blue-600 hover:bg-blue-700 transition-colors px-4 py-2 rounded-md font-medium">
             Salvar Tarefa
           </button>
         </form>
